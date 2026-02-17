@@ -1,0 +1,19 @@
+ - Server gets random pokemon from Main Database ✅
+ - Server stores that random pokemon in a Daily Database with 1 pokemon ✅
+ - Frontend Receives number of daily poki's chars, and puts that amount of input boxes.
+ - Add TTL of 1 Day
+ - API Call gets dailyPokemon from the daily Database
+ - Comparison is done between daily and input
+ - Send which characters are correct to front end
+ - Change squares colors and status 
+
+
+
+
+
+ - FEATURES
+- Desactivar siguientes filas hasta que se envie la actual (Tabulador problem) --LowPriority
+- No poder enviar input si el pokemon no existe en la base de datos --HighPriority
+- Una vez enviado bloquear fila y activar siguiente fila 
+- Checkear si ha ganado al hacer submit
+- Mostrar un teclado en pantalla
