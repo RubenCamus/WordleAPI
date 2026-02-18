@@ -4,12 +4,18 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { Db } = require("mongodb");
 const cron = require("node-cron");
+const dotenv = require("dotenv");
 const app = express();
 const port = 3000;
+
+dotenv.config();
 app.use(bodyParser.json());
 app.use(cors({
-  orgin: "*"
+  origin: "*"
 }))
+
+const apiKey = process.env.API_KEY;
+console.log(process.env);
 
 // Error handling middleware
 app.use((error, req, res, next) => { 
@@ -23,8 +29,9 @@ app.use((error, req, res, next) => {
 
 /////////////////////////////////////////// MONGODB ////////////////////////////////////////////////
 // Connect Main Database
+
 const client = new MongoClient(
-  "mongodb+srv://Risen:Rub3nC4musC4mpos250904@cluster0.mwdyaje.mongodb.net/", // Your mongoDB cluster URL
+  `mongodb+srv://Risen:${apiKey}@cluster0.mwdyaje.mongodb.net//` // Your mongoDB cluster URL
 );
 
 const database = client.db("PokimonDB"); // Your DB name
@@ -160,14 +167,6 @@ async function getPokimonChars(poki) {
     pokimonChars.push(pokiChar);
   }
   return pokimonChars;
-}
-
-async function checkUserId(id) {
-  if (id != null) {console.log('player ID exists');}
-  else { 
-    var newPlayerId = Math.random() * 255;
-   }
-  
 }
 
 async function startGame() {
