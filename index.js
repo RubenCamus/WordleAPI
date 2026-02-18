@@ -4,11 +4,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { Db } = require("mongodb");
 const cron = require("node-cron");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 const app = express();
 const port = 3000;
 
-dotenv.config();
 app.use(bodyParser.json());
 app.use(cors({
   origin: "*"
@@ -25,7 +24,7 @@ app.use((error, req, res, next) => {
     status: error.statusCode,
     message: error.message
   })
-})
+});
 
 /////////////////////////////////////////// MONGODB ////////////////////////////////////////////////
 // Connect Main Database
@@ -287,4 +286,5 @@ app.get("/db/:id", async (req, res) => {
 
 app.listen(port, () => {
   console.log("app listening on", port);
+  console.log(process.env.API_KEY)
 });
