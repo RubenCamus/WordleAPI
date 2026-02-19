@@ -7,14 +7,12 @@ const cron = require("node-cron");
 const dotenv = require("dotenv").config();
 const app = express();
 const port = 3000;
+const apiKey = process.env.API_KEY;
 
 app.use(bodyParser.json());
 app.use(cors({
-  origin: "*"
+  origin: "https://wordlepoki.netlify.app/"
 }))
-
-const apiKey = process.env.API_KEY;
-console.log(process.env);
 
 // Error handling middleware
 app.use((error, req, res, next) => { 
