@@ -11,8 +11,8 @@ const apiKey = process.env.API_KEY;
 
 app.use(bodyParser.json());
 app.use(cors({
-  origin: "https://wordlepoki.netlify.app/"
-}))
+  origin: "https://wordlepoki.netlify.app"
+}));
 
 // Error handling middleware
 app.use((error, req, res, next) => { 
